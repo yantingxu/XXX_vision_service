@@ -1,0 +1,15 @@
+XXX_VISION Frontend Sub-Service in Golang
+
+[QPS]
+When invoking fake sub-services, the framework achieves 500+QPS measured by AB with 1K concurrency; while the Tornado framework only gets 250QPS in the same setting.
+When invoking real sub-services, QPS is almost the same as Tornado (6.78 vs 6.56), which is limited by the throughout of the sub-services
+Therefore, the main bottleneck of the overall system is the sub-services.
+
+[Response Time]
+When invoking fake sub-services, 4ms vs 12.7ms (Tornado)
+When invoking real sub-services, both are nearly 200ms
+
+TODO: This is not an in-production version, lacking lots of error handling and may have goroutine leak caused by unbuffered chans
+
+
+
